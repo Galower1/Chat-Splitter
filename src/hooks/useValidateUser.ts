@@ -14,6 +14,8 @@ export function useValidateUser() {
     retry: false,
   });
 
+  const isValidUser = data?.status === 200;
+
   const handleInputChange = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => {
@@ -27,5 +29,5 @@ export function useValidateUser() {
     }, 500);
   };
 
-  return { handleInputChange, inputValue, loading, data };
+  return { handleInputChange, inputValue, loading, isValidUser };
 }

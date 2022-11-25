@@ -1,7 +1,8 @@
 import { useValidateUser } from "../hooks/useValidateUser";
 
 function ChannelQuery() {
-  const { inputValue, handleInputChange, loading, data } = useValidateUser();
+  const { inputValue, handleInputChange, loading, isValidUser } =
+    useValidateUser();
 
   return (
     <div>
@@ -12,10 +13,8 @@ function ChannelQuery() {
         onChange={handleInputChange}
       />
       <div>{loading && "Loading"}</div>
-      {!loading && data && (
-        <div>
-          {data?.status === 200 ? "Channel exists" : "Channel does not exist"}
-        </div>
+      {!loading && isValidUser && (
+        <div>{isValidUser ? "Channel exists" : "Channel does not exist"}</div>
       )}
     </div>
   );
