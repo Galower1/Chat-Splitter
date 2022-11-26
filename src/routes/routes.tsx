@@ -1,8 +1,8 @@
 import Landing from "../components/Landing";
 import { createBrowserRouter } from "react-router-dom";
 import ChatsContainer from "../components/ChatsContainer";
-import { validateUser } from "../requests/validateUser";
 import ErrorInQuery from "../components/ErrorInQuery";
+import { channelNameLoader } from "../utils/loader";
 
 export const router = createBrowserRouter([
   {
@@ -12,15 +12,7 @@ export const router = createBrowserRouter([
   {
     path: ":channelName",
     element: <ChatsContainer />,
-    loader: async ({ params }) => {
-      const { status } = await validateUser({
-        queryKey: [{}, params.channelName],
-      });
-
-      if (status === 404) {
-        throw new Response("Not found", { status });
-      }
-    },
+    loader: channelNameLoader,
     errorElement: <ErrorInQuery />,
   },
 ]);
