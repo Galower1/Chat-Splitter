@@ -1,12 +1,13 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import ChatsContainer from "./components/ChatsContainer";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/routes";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ChatsContainer username="sodapoppin" />
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 }

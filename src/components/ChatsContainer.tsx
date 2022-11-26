@@ -1,13 +1,11 @@
+import { useParams } from "react-router-dom";
 import { useChatsStore } from "../hooks/stores/useChatsStore";
 import { useTmi } from "../hooks/useTmi";
 import ChatWindow from "./ChatWindow";
 
-type Props = {
-  username: string;
-};
-
-function ChatsContainer({ username }: Props) {
-  const { messages, loading } = useTmi(username);
+function ChatsContainer() {
+  const { channelName } = useParams();
+  const { messages, loading } = useTmi(channelName as string);
   const { chats, addChat } = useChatsStore();
 
   return (
@@ -15,20 +13,21 @@ function ChatsContainer({ username }: Props) {
       {loading ? (
         "Loading..."
       ) : (
-        <div className="flex items-center justify-center">
+        <div>
           {chats.length
             ? chats.map((chat) => (
                 <ChatWindow
                   key={chat.index}
                   index={chat.index}
                   filters={chat.filters}
+                  title={chat.title}
                   messages={messages}
                 />
               ))
             : "No Chats Loaded"}
         </div>
       )}
-      <button onClick={() => addChat([])}>Add</button>
+      <button onClick={() => addChat([], "Random Chat")}>Add</button>
     </div>
   );
 }

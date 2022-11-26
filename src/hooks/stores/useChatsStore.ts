@@ -4,15 +4,15 @@ import { Filter } from "../../types/Filter";
 
 interface ChatState {
   chats: ChatManager[];
-  addChat: (filters: Filter[]) => void;
+  addChat: (filters: Filter[], title: string) => void;
   removeChat: (index: number) => void;
 }
 
 export const useChatsStore = create<ChatState>()((set) => ({
   chats: [],
-  addChat: (filters: Filter[]) =>
+  addChat: (filters: Filter[], title: string) =>
     set((state) => ({
-      chats: [...state.chats, { index: state.chats.length, filters }],
+      chats: [...state.chats, { index: state.chats.length, filters, title }],
     })),
   removeChat: (index: number) =>
     set((state) => ({
