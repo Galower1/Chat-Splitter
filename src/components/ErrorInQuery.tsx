@@ -1,5 +1,11 @@
+import ChannelQuery from "./ChannelQuery";
+
 function ErrorInQuery() {
-  return <div>Random Error</div>;
+  return (
+    <div>
+      <ChannelQuery />
+    </div>
+  );
 }
 
 export default ErrorInQuery;

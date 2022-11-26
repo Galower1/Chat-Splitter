@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useChatsStore } from "../hooks/stores/useChatsStore";
 import { useTmi } from "../hooks/useTmi";
 import ChatWindow from "./ChatWindow";
+import Loader from "./Loader";
 
 function ChatsContainer() {
   const { channelName } = useParams();
@@ -11,9 +12,9 @@ function ChatsContainer() {
   return (
     <div className="bg-gray-900 text-white h-screen overflow-hidden">
       {loading ? (
-        "Loading..."
+        <Loader />
       ) : (
-        <div>
+        <>
           {chats.length
             ? chats.map((chat) => (
                 <ChatWindow
@@ -25,9 +26,9 @@ function ChatsContainer() {
                 />
               ))
             : "No Chats Loaded"}
-        </div>
+          <button onClick={() => addChat([], "Random Chat")}>Add</button>
+        </>
       )}
-      <button onClick={() => addChat([], "Random Chat")}>Add</button>
     </div>
   );
 }

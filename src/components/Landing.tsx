@@ -1,5 +1,11 @@
+import ChannelQuery from "./ChannelQuery";
+
 function Landing() {
-  return <div>Landing page</div>;
+  return (
+    <div>
+      <ChannelQuery />
+    </div>
+  );
 }
 
 export default Landing;
