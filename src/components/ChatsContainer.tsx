@@ -17,13 +17,7 @@ function ChatsContainer() {
         <>
           {chats.length
             ? chats.map((chat) => (
-                <ChatWindow
-                  key={chat.index}
-                  index={chat.index}
-                  filters={chat.filters}
-                  title={chat.title}
-                  messages={messages}
-                />
+                <ChatWindow key={chat.index} {...{ ...chat, messages }} />
               ))
             : "No Chats Loaded"}
           <button onClick={() => addChat([], "Random Chat")}>Add</button>

@@ -21,8 +21,8 @@ function ChatWindow({ messages, index, title, filters }: Props) {
   return (
     <Draggable handle=".chat-window-handler">
       <div className="chat-window-container w-96">
-        <ChatWindowDrag title={title} index={index} />
-        <ChatWindowFilters filters={filters} />
+        <ChatWindowDrag {...{ title, index }} />
+        <ChatWindowFilters {...{ filters }} />
         <div
           ref={chatWindowRef}
           className="overflow-y-scroll overflow-x-hidden bg-gray-700 h-96"
