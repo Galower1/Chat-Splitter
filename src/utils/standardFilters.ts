@@ -1,21 +1,22 @@
+import { Filter } from "../types/Filter";
 import { Message } from "../types/Message";
 
-export function isFirstMsg({ tags }: Message) {
+export const isFirstMsg: Filter = ({ tags }: Message) => {
   return !!tags["first-msg"];
-}
+};
 
-export function isMod({ tags }: Message) {
+export const isMod: Filter = ({ tags }: Message) => {
   return !!tags.mod;
-}
+};
 
-export function isSubbed({ tags }: Message) {
+export const isSubbed: Filter = ({ tags }: Message) => {
   return !!tags.subscriber;
-}
+};
 
-export function isVip({ tags }: Message) {
+export const isVip: Filter = ({ tags }: Message) => {
   return !!tags.badges?.vip;
-}
+};
 
-export function isSubGifter({ tags }: Message) {
+export const isSubGifter: Filter = ({ tags }: Message) => {
   return !!tags.badges?.["sub-gifter"];
-}
+};

@@ -1,5 +1,3 @@
 import { Message } from "./Message";
 
-type Filter = {
-  callback: (message: Message, ...args: any[]) => boolean;
-};
+type Filter = (message: Message, ...args: any[]) => boolean;

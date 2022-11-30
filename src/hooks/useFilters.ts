@@ -5,9 +5,7 @@ import { Message } from "../types/Message";
 export function useFilters(filters: Filter[], messages: Message[]) {
   const filteredMessages = useMemo(
     () =>
-      messages.filter((message) =>
-        filters.every((filter) => filter.callback(message))
-      ),
+      messages.filter((message) => filters.every((filter) => filter(message))),
     [filters, messages]
   );
 
