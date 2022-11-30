@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import Draggable from "react-draggable";
 import { useAutoScroll } from "../hooks/useAutoScroll";
+import { useFilters } from "../hooks/useFilters";
 import { Filter } from "../types/Filter";
 import { Message } from "../types/Message";
 import ChatBubble from "./ChatBubble";
@@ -17,6 +18,7 @@ type Props = {
 function ChatWindow({ messages, index, title, filters }: Props) {
   const chatWindowRef = useRef<HTMLDivElement>(null);
   useAutoScroll(chatWindowRef, messages);
+  const filteredMessages = useFilters(filters, messages);
 
   return (
     <Draggable handle=".chat-window-handler">
