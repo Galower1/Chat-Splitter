@@ -29,7 +29,7 @@ function ChatWindow({ messages, index, title, filters }: Props) {
           ref={chatWindowRef}
           className="overflow-y-scroll overflow-x-hidden bg-gray-700 h-96"
         >
-          {messages.map(({ tags, message }) => (
+          {filteredMessages.map(({ tags, message }) => (
             <ChatBubble
               key={tags.id}
               username={tags.username}

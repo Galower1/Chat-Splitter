@@ -10,11 +10,11 @@ interface ChatState {
 
 export const useChatsStore = create<ChatState>()((set) => ({
   chats: [],
-  addChat: (filters: Filter[], title: string) =>
+  addChat: (filters, title) =>
     set((state) => ({
       chats: [...state.chats, { index: state.chats.length, filters, title }],
     })),
-  removeChat: (index: number) =>
+  removeChat: (index) =>
     set((state) => ({
       chats: state.chats.filter((chat) => chat.index !== index),
     })),
