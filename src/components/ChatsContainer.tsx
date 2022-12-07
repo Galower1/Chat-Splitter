@@ -15,6 +15,7 @@ function ChatsContainer() {
       className="bg-gray-900 text-white h-screen"
       vertical
       horizontal
+      ignoreElements=".prevent-drag-scroll"
     >
       {loading ? (
         <Loader />

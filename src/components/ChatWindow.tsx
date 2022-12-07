@@ -20,7 +20,7 @@ function ChatWindow({ messages, index, title, filters }: Props) {
 
   return (
     <Draggable handle=".chat-window-handler">
-      <div className="chat-window-container w-96">
+      <div className="chat-window-container w-96 prevent-drag-scroll">
         <ChatWindowDrag {...{ title, index }} />
         <ChatWindowFilters {...{ filters }} />
         <div
