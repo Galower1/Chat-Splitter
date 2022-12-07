@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useChatsStore } from "../hooks/stores/useChatsStore";
 import { useTmi } from "../hooks/useTmi";
+import ScrollContainer from "react-indiana-drag-scroll";
 import ChatWindow from "./ChatWindow";
 import Loader from "./Loader";
 
@@ -10,7 +11,11 @@ function ChatsContainer() {
   const { chats, addChat } = useChatsStore();
 
   return (
-    <div className="bg-gray-900 text-white h-screen overflow-hidden">
+    <ScrollContainer
+      className="bg-gray-900 text-white h-screen"
+      vertical
+      horizontal
+    >
       {loading ? (
         <Loader />
       ) : (
@@ -23,7 +28,7 @@ function ChatsContainer() {
           <button onClick={() => addChat([], "Random Chat")}>Add</button>
         </>
       )}
-    </div>
+    </ScrollContainer>
   );
 }
 

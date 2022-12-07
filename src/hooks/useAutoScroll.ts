@@ -1,11 +1,15 @@
-import { RefObject, useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-export function useAutoScroll(ref: RefObject<HTMLElement>, updateParam: any) {
+export function useAutoScroll(updateParam: any) {
+  const elementRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const element = ref.current;
+    const element = elementRef.current;
 
     if (element) {
       element.scrollTop = element.scrollHeight;
     }
   }, [updateParam]);
+
+  return elementRef;
 }

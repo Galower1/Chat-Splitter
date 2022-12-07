@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import Draggable from "react-draggable";
 import { useAutoScroll } from "../hooks/useAutoScroll";
 import { useFilters } from "../hooks/useFilters";
@@ -16,8 +15,7 @@ type Props = {
 };
 
 function ChatWindow({ messages, index, title, filters }: Props) {
-  const chatWindowRef = useRef<HTMLDivElement>(null);
-  useAutoScroll(chatWindowRef, messages);
+  const chatWindowRef = useAutoScroll(messages);
   const filteredMessages = useFilters(filters, messages);
 
   return (

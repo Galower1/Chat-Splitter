@@ -1,11 +1,7 @@
 import ChannelQuery from "./ChannelQuery";
 
 function ErrorInQuery() {
-  return (
-    <div>
-      <ChannelQuery />
-    </div>
-  );
+  return <ChannelQuery />;
 }
 
 export default ErrorInQuery;

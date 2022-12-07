@@ -8,6 +8,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />,
+    errorElement: <ErrorInQuery />,
   },
   {
     path: ":channelName",
