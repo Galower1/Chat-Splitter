@@ -1,35 +1,29 @@
+import { useMemo } from "react";
 import { useParams } from "react-router-dom";
+import ReactFlow, { Background, Controls } from "reactflow";
 import { useChatsStore } from "../hooks/stores/useChatsStore";
 import { useTmi } from "../hooks/useTmi";
-import ScrollContainer from "react-indiana-drag-scroll";
 import ChatWindow from "./ChatWindow";
 import Loader from "./Loader";
+import "reactflow/dist/style.css";
 
 function ChatsContainer() {
   const { channelName } = useParams();
   const { messages, loading } = useTmi(channelName as string);
-  const { chats, addChat } = useChatsStore();
+  const { chats } = useChatsStore();
+  const nodeTypes = useMemo(() => ({ chatWindow: ChatWindow }), []);
 
   return (
-    <ScrollContainer
-      className="bg-gray-900 text-white h-screen"
-      vertical
-      horizontal
-      ignoreElements=".prevent-drag-scroll"
-    >
+    <div className="bg-gray-900 text-white h-screen">
       {loading ? (
         <Loader />
       ) : (
-        <>
-          {chats.length
-            ? chats.map((chat) => (
-                <ChatWindow key={chat.index} {...{ ...chat, messages }} />
-              ))
-            : "No Chats Loaded"}
-          <button onClick={() => addChat([], "Random Chat")}>Add</button>
-        </>
+        <ReactFlow nodeTypes={nodeTypes}>
+          <Background />
+          <Controls />
+        </ReactFlow>
       )}
-    </ScrollContainer>
+    </div>
   );
 }
 
