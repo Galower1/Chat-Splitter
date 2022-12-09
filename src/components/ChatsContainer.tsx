@@ -1,9 +1,8 @@
-import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import ReactFlow, { Background, Controls } from "reactflow";
 import { useChatsStore } from "../hooks/stores/useChatsStore";
 import { useTmi } from "../hooks/useTmi";
-import ChatWindow from "./ChatWindow";
+import { useReactFlow } from "../hooks/useReactFlow";
 import Loader from "./Loader";
 import "reactflow/dist/style.css";
 
@@ -11,7 +10,7 @@ function ChatsContainer() {
   const { channelName } = useParams();
   const { messages, loading } = useTmi(channelName as string);
   const { chats } = useChatsStore();
-  const nodeTypes = useMemo(() => ({ chatWindow: ChatWindow }), []);
+  const { nodeTypes } = useReactFlow();
 
   return (
     <div className="bg-gray-900 text-white h-screen">

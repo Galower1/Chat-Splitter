@@ -7,12 +7,14 @@ import ChatBubble from "./ChatBubble";
 import ChatWindowDrag from "./ChatWindowDrag";
 import ChatWindowFilters from "./ChatWindowFilters";
 
-type Props = NodeProps<{
+export interface ChatWindowProps {
   messages: Message[];
   filters: Filter[];
   index: number;
   title: string;
-}>;
+}
+
+type Props = NodeProps<ChatWindowProps>;
 
 function ChatWindow({ data: { messages, filters, title, index } }: Props) {
   const chatWindowRef = useAutoScroll(messages);
