@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import tmi from "tmi.js";
-import { Message } from "../types/Message";
+import { useMessagesStore } from "./stores/useMessagesStore";
 
 export function useTmi(username: string) {
-  const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(true);
+  const { addMessage } = useMessagesStore();
 
   useEffect(() => {
     const client = new tmi.Client({
@@ -14,7 +14,7 @@ export function useTmi(username: string) {
     client.connect().then(() => setLoading(false));
 
     client.addListener("message", (_channel, tags, message) => {
-      setMessages((prev) => [...prev, { tags, message }]);
+      addMessage({ tags, message });
     });
 
     return () => {
@@ -23,5 +23,5 @@ export function useTmi(username: string) {
     };
   }, []);
 
-  return { messages, loading };
+  return { loading };
 }

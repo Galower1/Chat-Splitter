@@ -1,28 +1,27 @@
 import { useAutoScroll } from "../hooks/useAutoScroll";
 import { useFilters } from "../hooks/useFilters";
 import { Filter } from "../types/Filter";
-import { Message } from "../types/Message";
 import { NodeProps } from "reactflow";
 import ChatBubble from "./ChatBubble";
 import ChatWindowDrag from "./ChatWindowDrag";
 import ChatWindowFilters from "./ChatWindowFilters";
+import { useMessagesStore } from "../hooks/stores/useMessagesStore";
 
 export interface ChatWindowProps {
-  messages: Message[];
   filters: Filter[];
-  index: number;
   title: string;
 }
 
 type Props = NodeProps<ChatWindowProps>;
 
-function ChatWindow({ data: { messages, filters, title, index } }: Props) {
+function ChatWindow({ id, data: { filters, title } }: Props) {
+  const { messages } = useMessagesStore();
   const chatWindowRef = useAutoScroll(messages);
   const filteredMessages = useFilters(filters, messages);
 
   return (
     <div className="chat-window-container w-96">
-      <ChatWindowDrag index={index} title={title} />
+      <ChatWindowDrag id={id} title={title} />
       <ChatWindowFilters filters={filters} />
       <div
         ref={chatWindowRef}
