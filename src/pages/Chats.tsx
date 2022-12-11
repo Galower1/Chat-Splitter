@@ -2,11 +2,11 @@ import { useParams } from "react-router-dom";
 import ReactFlow, { Background, Controls } from "reactflow";
 import { useTmi } from "../hooks/useTmi";
 import { useReactFlowNodes } from "../hooks/useReactFlowNodes";
-import Loader from "./Loader";
+import Loader from "../components/Loader";
 import "reactflow/dist/style.css";
 import { useNodesStore } from "../hooks/stores/useNodesStore";
 
-function ChatsContainer() {
+function Chats() {
   const { channelName } = useParams();
   const { loading } = useTmi(channelName as string);
   const { nodeTypes, nodes, onNodesChange } = useReactFlowNodes();
@@ -36,4 +36,4 @@ function ChatsContainer() {
   );
 }
 
-export default ChatsContainer;
+export default Chats;

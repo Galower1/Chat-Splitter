@@ -4,7 +4,6 @@ import { Filter } from "../types/Filter";
 import { NodeProps } from "reactflow";
 import ChatBubble from "./ChatBubble";
 import ChatWindowDrag from "./ChatWindowDrag";
-import ChatWindowFilters from "./ChatWindowFilters";
 import { useMessagesStore } from "../hooks/stores/useMessagesStore";
 
 export interface ChatWindowProps {
@@ -22,7 +21,6 @@ function ChatWindow({ id, data: { filters, title } }: Props) {
   return (
     <div className="chat-window-container w-96">
       <ChatWindowDrag id={id} title={title} />
-      <ChatWindowFilters filters={filters} />
       <div
         ref={chatWindowRef}
         className="overflow-y-scroll overflow-x-hidden bg-gray-700 h-96"

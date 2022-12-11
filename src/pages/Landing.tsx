@@ -1,4 +1,4 @@
-import ChannelQuery from "./ChannelQuery";
+import ChannelQuery from "../components/ChannelQuery";
 
 function Landing() {
   return (

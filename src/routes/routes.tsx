@@ -1,6 +1,6 @@
-import Landing from "../components/Landing";
+import Landing from "../pages/Landing";
 import { createBrowserRouter } from "react-router-dom";
-import ChatsContainer from "../components/ChatsContainer";
+import Chats from "../pages/Chats";
 import ErrorInQuery from "../components/ErrorInQuery";
 import { channelNameLoader } from "../utils/loader";
 
@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
   },
   {
     path: ":channelName",
-    element: <ChatsContainer />,
+    element: <Chats />,
     loader: channelNameLoader,
     errorElement: <ErrorInQuery />,
   },
